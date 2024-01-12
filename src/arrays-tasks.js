@@ -275,15 +275,20 @@ function distinct(arr) {
  */
 function createNDimensionalArray(/* n, size */) {
   throw new Error('Not implemented');
-  //   return Array.from({ length: size }, () => {
-  //     const arr = [];
-  //     while (arr.length + 1 !== n) {
-  //       arr.push([]);
-  //     }
-  //     arr.push(new Array(size).fill(0));
-  //     return arr;
-  //   });
 }
+// function createNDimensionalArray(n, size) {
+//   let depth = 0;
+//   return Array.from({ length: size }, () => {
+//     depth += 1;
+//     return Array.from({ length: size }, () => {
+//       if (depth <= n) {
+//         depth += 1;
+//         return new Array(size).fill(0);
+//       }
+//       return [];
+//     });
+//   });
+// }
 
 // console.log(createNDimensionalArray(2, 3));
 // console.log(createNDimensionalArray(3, 2));
@@ -335,8 +340,10 @@ function selectMany(arr, childrenSelector) {
  *   calculateBalance([ [ 10, 8 ], [ 1, 5 ] ])  => (10 - 8) + (1 - 5) = 2 + -4 = -2
  *   calculateBalance([]) => 0
  */
-function calculateBalance(/* arr */) {
-  throw new Error('Not implemented');
+function calculateBalance(arr) {
+  return arr.reduce((sum, item) => {
+    return sum + (item[0] - item[1]);
+  }, 0);
 }
 
 /**
